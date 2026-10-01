@@ -1,0 +1,16 @@
+sandbox_dir: .
+network:
+  allowed_hosts:
+    - github.com
+    - pypi.org
+    - localhost
+  allow_localhost: true
+taint:
+  untrusted_patterns: ["README*", "*.md", "*.html", "*.htm", "issues/*"]
+  sensitive_patterns: [".env", ".env.*", ".ssh/*", ".aws/*", "*.pem", "*.key", "*id_rsa*"]
+shell:
+  risky_programs: [curl, wget, nc, ncat, netcat, scp, ssh, sftp, ftp]
+  allowed_programs: [python, python3, pytest, pip, git, ls, dir, echo, type, find, rg]
+advisor:
+  enabled: false
+  timeout_seconds: 4
